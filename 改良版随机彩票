@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>随机彩票</title>
+	<meta charset="utf-8">
+</head>
+<body>
+<button id="change">click
+</button>
+<div id="result"></div>
+<script>
+	(function(){
+		var oChange=document.getElementById('change');
+		var oResult=document.getElementById('result');
+		var keyValue={};
+
+		oChange.onclick=function(){
+		var result=[];//存放最后结果
+		for(var i = 0; i < 7 ; i++){
+			result.push(Math.floor(Math.random()*37));
+		}
+		oResult.innerHTML=result;
+		history.pushState(result,'');
+	};
+	window.onpopstate=function(e){
+		oResult.innerHTML=e.state;
+	};
+	})();
+</script>
+</body>
+</html>
